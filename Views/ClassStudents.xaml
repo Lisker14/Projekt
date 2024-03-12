@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentTestPicker.Views.ClassStudents"
+             xmlns:v="clr-namespace:StudentTestPicker.Views"
+             Title="Dzienik Nauczycielski">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <HorizontalStackLayout StyleClass="formInput">
+                <Editor HeightRequest="10" Placeholder="Imie ucznia" x:Name="StudentName"/>
+                <Editor HeightRequest="10" Placeholder="Nazwisko ucznia" x:Name="StudentSurname"/>
+                <Button Text="Dodaj ucznia" Clicked="Add_Student" StyleClass="addButton"/>
+                <Button Text="Wróć" Clicked="ReturnButtonClicked" x:Name="backButton"/>
+                <Button Text="Losuj ucznia" Clicked="DrawStudent" x:Name="Losowanie"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout  StyleClass="formInput">
+            </HorizontalStackLayout>
+
+            <CollectionView x:Name="studentsCollection"
+                            ItemsSource="{Binding Students}"
+                            Margin="20"
+                            SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <v:Student
+                                StudentName="{Binding Name}"
+                                StudentSurname="{Binding Surname}"
+                            />
+                            <Button Text="X" Clicked="RemoveStudentClicked" CommandParameter="{Binding .}" StyleClass="removeButton"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

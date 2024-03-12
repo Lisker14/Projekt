@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StudentTestPicker.Views.Student"
+             x:Name="this">
+    <VerticalStackLayout>
+        <Frame BindingContext="{x:Reference this}">
+            <VerticalStackLayout>
+                <HorizontalStackLayout StyleClass="HorizontalStudent">
+                    <Label Text="{Binding StudentName}"/>
+                    <Label Text="{Binding StudentSurname}" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Frame>
+    </VerticalStackLayout>
+</ContentView>
